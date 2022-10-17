@@ -14,14 +14,15 @@ namespace Proyecto_POO
     public partial class Form1 : Form
     {
         List<Roquemon> roquemons;
-        Roquemon r1 = new Roquemon(); //roquemon del primer jugador
-        Roquemon r2 = new Roquemon(); //roquemon del segundo jugador
+        public Roquemon r1 = new Roquemon(); //roquemon del primer jugador
+        public Roquemon r2 = new Roquemon(); //roquemon del segundo jugador
         public Form1()
         {
             InitializeComponent();
             roquemons = new List<Roquemon>();
         }
 
+        /// It reads a .csv file and creates a Roquemon object for each line in the file
         public void leerArchivo()
         {
             StreamReader reader = new StreamReader('datosRoquemon.csv');
@@ -31,8 +32,11 @@ namespace Proyecto_POO
                 Roquemon ro = new Roquemon(linea[0], linea[1], linea[2], linea[3], linea[4], linea[5], linea[6]);
                 roquemons.Add(ro);
             }
+            reader.Close();
         }
 
+        /* A method that takes a Roquemon object as a parameter and assigns it the values of the
+        Roquemon object that has the same name as the parameter. */
         public void asignarRoquemon(Roquemon ro)
         {
             foreach (var roquemon in roquemons)
@@ -53,7 +57,5 @@ namespace Proyecto_POO
                 }
             }
         }
-
-        
     }
 }
