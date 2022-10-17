@@ -16,6 +16,8 @@ namespace Proyecto_POO
         public int velocidad;
         public float critico;
 
+        
+
         public void bonoDano ()
         {
             //ataca en este turno con un bono de 5 de ataque
