@@ -16,17 +16,27 @@ namespace Proyecto_POO
         public int velocidad;
         public float critico;
 
-        
+        public Roquemon(string nombre, string tipo, int vida, int ataque, int defensa, int velocidad, float critico)
+        {
+            this.nombre = nombre;
+            this.tipo = tipo;
+            this.vida = vida;
+            this.ataque = ataque;
+            this.defensa = defensa;
+            this.velocidad = velocidad;
+            this.critico = critico;
+        }
 
         public void bonoDano ()
         {
             //ataca en este turno con un bono de 5 de ataque
-            //suple la funcion de Torrente, Flama  y Latigo
+            //suple la función de Torrente, Flama  y Latigo
         }
+/* A new line. */
 
         public void placaje()
         {
-            //es cuando el roquemon ataca, independientemente de la habilidad que haya escogido 
+            //es cuando el Roquemon ataca, independientemente de la habilidad que haya escogido 
         }
     }
 }
