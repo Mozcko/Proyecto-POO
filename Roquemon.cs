@@ -32,7 +32,6 @@ namespace Proyecto_POO
             //ataca en este turno con un bono de 5 de ataque
             //suple la función de Torrente, Flama  y Latigo
         }
-/* A new line. */
 
         public void placaje()
         {

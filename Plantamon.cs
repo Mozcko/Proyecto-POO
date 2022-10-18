@@ -8,6 +8,16 @@ namespace Proyecto_POO
 {
     class Plantamon : Roquemon 
     {
+        public Plantamon(string nombre, string tipo, int vida, int ataque, int defensa, int velocidad, float critico) : base(nombre, tipo, vida, ataque, defensa, velocidad, critico)
+        {
+            this.nombre = nombre;
+            this.tipo = tipo;
+            this.vida = vida;
+            this.ataque = ataque;
+            this.defensa = defensa;
+            this.velocidad = velocidad;
+            this.critico = critico;
+        }
 
         public void latigo()
         {
