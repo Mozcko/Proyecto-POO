@@ -27,6 +27,9 @@ namespace Proyecto_POO
             this.critico = critico;
         }
 
+        //cambiar variables a tipo int para poder usar la funcion correctamente
+        //el hacer esto permitira usar los valores obtenidos
+        
         public void bonoDano ()
         {
             //ataca en este turno con un bono de 5 de ataque

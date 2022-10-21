@@ -15,10 +15,13 @@ namespace Proyecto_POO
     {
         List<Roquemon> roquemons;
         int players = 0;
-        
-        public Form2()
+        public Form1 principal;
+        //public Form3 combate;
+        public Form2(Form1 principal)
         {
             InitializeComponent();
+            this.principal = principal;
+            // combate = new Form3(this, principal, roquemon1, roquemon2);
             roquemons = new List<Roquemon>();
             leerArchivo();
             
@@ -60,16 +63,16 @@ namespace Proyecto_POO
             if (players == 0)
             {
                 Roquemon roquemon1 = roquemons[0];
-                MessageBox.Show($"el {LabelMenu.Text.Substring(0, 8)} escogio a :{roquemon1.nombre}");
+                MessageBox.Show($"el {LabelMenu.Text.Substring(0, 8)} escogió a :{roquemon1.nombre}");
                 players++;
             }
             else
             {
                 Roquemon roquemon2 = roquemons[0];
-                MessageBox.Show($"el {LabelMenu.Text.Substring(0, 8)} escogio a :{roquemon2.nombre}");
+                MessageBox.Show($"el {LabelMenu.Text.Substring(0, 8)} escogió a :{roquemon2.nombre}");
                 apagarBotones();
             }
-            LabelMenu.Text = "Jugador2: escoje tu Roquemon";
+            LabelMenu.Text = "Jugador2: escoge tu Roquemon";
             button1.Enabled = false;
         }
 
@@ -79,16 +82,16 @@ namespace Proyecto_POO
             if (players == 0)
             {
                 Roquemon roquemon1 = roquemons[1];
-                MessageBox.Show($"el {LabelMenu.Text.Substring(0, 8)} escogio a :{roquemon1.nombre}");
+                MessageBox.Show($"el {LabelMenu.Text.Substring(0, 8)} escogió a :{roquemon1.nombre}");
                 players++;
             }
             else
             {
                 Roquemon roquemon2 = roquemons[1];
-                MessageBox.Show($"el {LabelMenu.Text.Substring(0, 8)} escogio a :{roquemon2.nombre}");
+                MessageBox.Show($"el {LabelMenu.Text.Substring(0, 8)} escogió a :{roquemon2.nombre}");
                 apagarBotones();
             }
-            LabelMenu.Text = "Jugador2: escoje tu Roquemon";
+            LabelMenu.Text = "Jugador2: escoge tu Roquemon";
             button2.Enabled = false;
         }
 
@@ -98,17 +101,33 @@ namespace Proyecto_POO
             if (players == 0)
             {
                 Roquemon roquemon1 = roquemons[2];
-                MessageBox.Show($"el {LabelMenu.Text.Substring(0, 8)} escogio a :{roquemon1.nombre}");
+                MessageBox.Show($"el {LabelMenu.Text.Substring(0, 8)} escogió a :{roquemon1.nombre}");
                 players++;
             }
             else
             {
                 Roquemon roquemon2 = roquemons[2];
-                MessageBox.Show($"el {LabelMenu.Text.Substring(0, 8)} escogio a :{roquemon2.nombre}");
+                MessageBox.Show($"el {LabelMenu.Text.Substring(0, 8)} escogió a :{roquemon2.nombre}");
                 apagarBotones();
             }
-            LabelMenu.Text = "Jugador2: escoje tu Roquemon";
+            LabelMenu.Text = "Jugador2: escoge tu Roquemon";
             button3.Enabled = false;
+        }
+
+        // A method that hides the current form and shows the principal form. 
+        public void regresar_jugadores()
+        {
+            this.hide();
+            principal.show();
+        }
+
+        public void iniciar_combate()
+        {
+            // Iniciar animación de combate
+            
+            //cambiar de pantalla
+            //combate.show();
+            this.hide();
         }
     }
 }
