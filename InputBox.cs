@@ -48,6 +48,8 @@ namespace Proyecto_POO
                     text_nombre.Clear();
                     player_count++;
                     Label_player.Text = $"introduce tu nombre Jugador {player_count}";
+                    this.Hide();
+                    this.Show();
                 }
                 else
                 {

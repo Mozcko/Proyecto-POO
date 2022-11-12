@@ -19,9 +19,9 @@ namespace Proyecto_POO
             this.critico = critico;
         }
 
-        public void latigo()
+        public void fotosintesis()
         {
-            //atacara este turno con un bono de 5 de ataque
+            //atacara este turno y aumenta la defensa por 5 durante 3 turnos
         }
     }
 }
