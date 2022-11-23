@@ -39,13 +39,13 @@ namespace Proyecto_POO
             StreamReader reader = new StreamReader("datosRoquemon.csv");
 
             var aguamon = reader.ReadLine().Split(',');
-            Aguamon ag = new Aguamon(aguamon[0], aguamon[1], int.Parse(aguamon[2]), int.Parse(aguamon[3]), int.Parse(aguamon[4]), int.Parse(aguamon[5]), float.Parse(aguamon[6]));
+            Aguamon ag = new Aguamon(aguamon[0], aguamon[1], int.Parse(aguamon[2]), int.Parse(aguamon[3]), int.Parse(aguamon[4]), int.Parse(aguamon[5]), int.Parse(aguamon[6]));
 
             var plantamon = reader.ReadLine().Split(',');
-            Plantamon pl = new Plantamon(plantamon[0], plantamon[1], int.Parse(plantamon[2]), int.Parse(plantamon[3]), int.Parse(plantamon[4]), int.Parse(plantamon[5]), float.Parse(plantamon[6]));
+            Plantamon pl = new Plantamon(plantamon[0], plantamon[1], int.Parse(plantamon[2]), int.Parse(plantamon[3]), int.Parse(plantamon[4]), int.Parse(plantamon[5]), int.Parse(plantamon[6]));
 
             var fuegomon = reader.ReadLine().Split(',');
-            Fuegomon fg = new Fuegomon(fuegomon[0], fuegomon[1], int.Parse(fuegomon[2]), int.Parse(fuegomon[3]), int.Parse(fuegomon[4]), int.Parse(fuegomon[5]), float.Parse(fuegomon[6]));
+            Fuegomon fg = new Fuegomon(fuegomon[0], fuegomon[1], int.Parse(fuegomon[2]), int.Parse(fuegomon[3]), int.Parse(fuegomon[4]), int.Parse(fuegomon[5]), int.Parse(fuegomon[6]));
 
             roquemons.Add(ag);
             roquemons.Add(pl);
@@ -146,9 +146,9 @@ namespace Proyecto_POO
 
         private void Form2_FormClosing(object sender, FormClosingEventArgs e)
         {
-            var result  = MessageBox.Show("Seguro que quieres salir?", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            var result  = MessageBox.Show("Seguro que quieres salir?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            if ( result == DialogResult.OK)
+            if ( result == DialogResult.Yes)
             {
                 Application.Exit();
             }

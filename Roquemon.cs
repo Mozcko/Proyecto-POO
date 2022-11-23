@@ -14,9 +14,9 @@ namespace Proyecto_POO
         public int ataque;
         public int defensa;
         public int velocidad;
-        public float critico;
+        public int critico;
 
-        public Roquemon(string nombre, string tipo, int vida, int ataque, int defensa, int velocidad, float critico)
+        public Roquemon(string nombre, string tipo, int vida, int ataque, int defensa, int velocidad, int critico)
         {
             this.nombre = nombre;
             this.tipo = tipo;
@@ -41,6 +41,18 @@ namespace Proyecto_POO
         public virtual void ataqueEspecial()
         {
 
+        }
+
+        public bool comprobarVida()
+        {
+            if(this.vida <= 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
     }
 }

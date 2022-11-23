@@ -8,7 +8,7 @@ namespace Proyecto_POO
 {
     class Aguamon : Roquemon
     {
-        public Aguamon(string nombre, string tipo, int vida, int ataque, int defensa, int velocidad, float critico) : base(nombre, tipo, vida, ataque, defensa, velocidad, critico)
+        public Aguamon(string nombre, string tipo, int vida, int ataque, int defensa, int velocidad, int critico) : base(nombre, tipo, vida, ataque, defensa, velocidad, critico)
         {
             this.nombre = nombre;
             this.tipo = tipo;
