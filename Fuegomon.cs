@@ -19,9 +19,10 @@ namespace Proyecto_POO
             this.critico = critico;
         }
 
-        public void flama()
+        public override void ataqueEspecial()
         {
-            //ataca en este turno con un bono de 5 de ataque
+            //ataca y aumenta el critico del roquemon por 20 por 3 turnos
+            
         }
     }
 }

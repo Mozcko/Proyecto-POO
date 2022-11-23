@@ -61,6 +61,7 @@ namespace Proyecto_POO
             this.Ataque1.TabIndex = 2;
             this.Ataque1.Text = "button1";
             this.Ataque1.UseVisualStyleBackColor = true;
+            this.Ataque1.Click += new System.EventHandler(this.Ataque1_Click);
             // 
             // Ataque2
             // 
@@ -70,6 +71,7 @@ namespace Proyecto_POO
             this.Ataque2.TabIndex = 3;
             this.Ataque2.Text = "button2";
             this.Ataque2.UseVisualStyleBackColor = true;
+            this.Ataque2.Click += new System.EventHandler(this.Ataque2_Click);
             // 
             // Form3
             // 
@@ -82,6 +84,8 @@ namespace Proyecto_POO
             this.Controls.Add(this.label1);
             this.Name = "Form3";
             this.Text = "Form3";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form3_FormClosing);
+            this.Load += new System.EventHandler(this.Form3_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

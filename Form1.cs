@@ -25,5 +25,19 @@ namespace Proyecto_POO
             inputBox = new InputBox(this);
             inputBox.Get_Players_name();
         }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            var result = MessageBox.Show("Seguro que quieres salir?", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+            if (result == DialogResult.OK)
+            {
+                Application.Exit();
+            }
+            else
+            {
+                e.Cancel = true;
+            }
+        }
     }
 }

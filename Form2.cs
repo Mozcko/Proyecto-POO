@@ -29,7 +29,6 @@ namespace Proyecto_POO
             InitializeComponent();
             this.principal = principal;
             this.inputBox = inputBox;
-            combate = new Form3(this, principal, inputBox);
             roquemons = new List<Roquemon>();
             leerArchivo();
         }
@@ -79,7 +78,9 @@ namespace Proyecto_POO
             {
                 Roquemon2 = roquemons[0];
                 MessageBox.Show($"{inputBox.Nombre_jugador_2} escogió a : {Roquemon2.nombre}");
+                combate = new Form3(this, principal, inputBox);
                 apagarBotones();
+                iniciar_combate();
             }
             LabelMenu.Text = "Jugador 2: escoge tu Roquemon";
             button1.Enabled = false;
@@ -98,7 +99,9 @@ namespace Proyecto_POO
             {
                 Roquemon2 = roquemons[1];
                 MessageBox.Show($"{inputBox.Nombre_jugador_2} escogió a : {Roquemon2.nombre}");
+                combate = new Form3(this,principal, inputBox);
                 apagarBotones();
+                iniciar_combate();
             }
             LabelMenu.Text = "Jugador 2: escoge tu Roquemon";
             button2.Enabled = false;
@@ -117,6 +120,7 @@ namespace Proyecto_POO
             {
                 Roquemon2 = roquemons[2];
                 MessageBox.Show($"{inputBox.Nombre_jugador_2} escogió a : {Roquemon2.nombre}");
+                combate = new Form3(this, principal, inputBox);
                 apagarBotones();
                 iniciar_combate();
             }
@@ -138,6 +142,20 @@ namespace Proyecto_POO
             //cambiar de pantalla
             combate.Show();
             this.Hide();
+        }
+
+        private void Form2_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            var result  = MessageBox.Show("Seguro que quieres salir?", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+            if ( result == DialogResult.OK)
+            {
+                Application.Exit();
+            }
+            else
+            {
+                e.Cancel = true;
+            }
         }
     }
 }

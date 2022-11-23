@@ -30,11 +30,17 @@ namespace Proyecto_POO
         //cambiar variables a tipo int para poder usar la funcion correctamente
         //el hacer esto permitira usar los valores obtenidos
 
-        public void placaje()
+        public int placaje()
         {
             //ataca en este turno con un bono de 5 de ataque
             //suple la función de Torrente, Flama  y Latigo
             //es cuando el Roquemon ataca
+            return ataque + 5;
+        }
+
+        public virtual void ataqueEspecial()
+        {
+
         }
     }
 }

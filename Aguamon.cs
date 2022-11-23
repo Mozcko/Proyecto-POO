@@ -18,7 +18,7 @@ namespace Proyecto_POO
             this.velocidad = velocidad;
             this.critico = critico;
         }
-        public void ataqueRapido()
+        public override void ataqueEspecial()
         {
             //se aumenta la velocidad en 100 en este turno y despues se ataca
         }

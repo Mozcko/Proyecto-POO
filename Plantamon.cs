@@ -19,7 +19,7 @@ namespace Proyecto_POO
             this.critico = critico;
         }
 
-        public void fotosintesis()
+        public override void ataqueEspecial()
         {
             //atacara este turno y aumenta la defensa por 5 durante 3 turnos
         }
