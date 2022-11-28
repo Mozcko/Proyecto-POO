@@ -32,7 +32,7 @@ namespace Proyecto_POO
 
         public int placaje()
         {
-            //ataca en este turno con un bono de 5 de ataque
+            //ataca en esste turno con un bono de 5 de ataque
             //suple la función de Torrente, Flama  y Latigo
             //es cuando el Roquemon ataca
             return ataque + 5;

@@ -17,7 +17,7 @@ namespace Proyecto_POO
         InputBox inputBox;
         Roquemon roquemon1, roquemon2, roquemon1_base, roquemon2_base;
         Random random;
-        string nombre_jugador1, nombre_jugador2;
+        string nombre_jugador1, nombre_jugador2, nombre_roquemon1, nombre_roquemon2;
         string ataque1_roquemon1, ataque2_roquemon1, ataque1_roquemon2, ataque2_roquemon2;
         bool turno;
         int turnos_ch_r1, turnos_ch_r2;
@@ -49,18 +49,22 @@ namespace Proyecto_POO
                 case "agua":
                     ataque1_roquemon1 = "Torrente";
                     ataque2_roquemon1 = "Ataque Rapido";
+                    nombre_roquemon1 = "aguamon";
                     break;
                 case "planta":
                     ataque1_roquemon1 = "Latigo";
                     ataque2_roquemon1 = "Fotosintesis";
+                    nombre_roquemon1 = "plantamon";
                     break;
                 case "fuego":
                     ataque1_roquemon1 = "Flama";
                     ataque2_roquemon1 = "Furia";
+                    nombre_roquemon1 = "fuegomon";
                     break;
                 default:
                     ataque1_roquemon1 = "Placage";
                     ataque2_roquemon1 = "Ataque Especial";
+                    nombre_roquemon1 = "roquemon generico";
                     break;
             }
             switch (roquemon2.tipo)
@@ -68,18 +72,22 @@ namespace Proyecto_POO
                 case "agua":
                     ataque1_roquemon2 = "Torrente";
                     ataque2_roquemon2 = "Ataque Rapido";
+                    nombre_roquemon2 = "aguamon";
                     break;
                 case "planta":
                     ataque1_roquemon2 = "Latigo";
                     ataque2_roquemon2 = "Fotosintesis";
+                    nombre_roquemon2 = "plantamon";
                     break;
                 case "fuego":
                     ataque1_roquemon2 = "Flama";
                     ataque2_roquemon2 = "Furia";
+                    nombre_roquemon2 = "fuegomon";
                     break;
                 default:
                     ataque1_roquemon2 = "Placage";
                     ataque2_roquemon2 = "Ataque Especial";
+                    nombre_roquemon2 = "roquemon generico";
                     break;
             }
 
@@ -90,6 +98,11 @@ namespace Proyecto_POO
 
         }
         
+        public void finPartida()
+        {
+            Application.Exit();
+        }
+
         public void cambiarTurno()
         {
             if (turno)
@@ -164,30 +177,42 @@ namespace Proyecto_POO
             dano_roquemon1 = ataque_efectivo_roquemon1 - roquemon2.defensa;
             dano_roquemon2 = ataque_efectivo_roquemon2 - roquemon1.defensa;
 
+            //comprobacion de daños, si el daño es menor a 0 el daño se redondea a 0
+
+            if (dano_roquemon1 < 0)
+            {
+                dano_roquemon1 = 0;
+            }
+            if (dano_roquemon2 < 0)
+            {
+                dano_roquemon2 = 0;
+            }
+
             velocidad_roquemon1 = roquemon1.velocidad + random.Next(-10, 10);
             velocidad_roquemon2 = roquemon2.velocidad + random.Next(-10, 10);
 
-            critico_roquemon1 = random.Next(0,100) >= roquemon1.critico;
-            critico_roquemon2 = random.Next(0, 100) >= roquemon2.critico;
+            critico_roquemon1 = random.Next(0,100) <= roquemon1.critico;
+            critico_roquemon2 = random.Next(0, 100) <= roquemon2.critico;
 
             //probabilidades de critico y ataques superefectivos
             if (critico_roquemon1)
             {
                 dano_roquemon1 *= 2;
-                if(superEfectivo() == "roquemon1")
-                {
-                    dano_roquemon1 *= 1.5f;
-                    MessageBox.Show($"El ataque fue super Efectivo e hizo {dano_roquemon1} de daño");
-                }
             }
             else if (critico_roquemon2)
             {
                 dano_roquemon2 *= 2;
-                if(superEfectivo() == "roquemon2")
-                {
-                    dano_roquemon2 *= 1.5f;
-                    MessageBox.Show($"El ataque fue super Efectivo e hizo {dano_roquemon2} de daño");
-                }
+            }
+
+            if (superEfectivo() == "roquemon1")
+            {
+                dano_roquemon1 *= 1.5f;
+                MessageBox.Show($"El ataque fue super Efectivo");
+            }
+            else if (superEfectivo() == "roquemon2")
+            {
+                dano_roquemon2 *= 1.5f;
+                MessageBox.Show($"El ataque fue super Efectivo");
             }
 
             if (velocidad_roquemon1 > velocidad_roquemon2)
@@ -196,12 +221,17 @@ namespace Proyecto_POO
                 if (!roquemon2.comprobarVida())
                 {
                     MessageBox.Show($"{nombre_jugador1} Gano con su {roquemon1.nombre}!!!");
+                    finPartida();
                 }
+                MessageBox.Show($"El {nombre_roquemon1} de {nombre_jugador1} hizo {dano_roquemon1} a el {nombre_roquemon2} de {nombre_jugador2}");
                 roquemon1.vida -= (int)dano_roquemon2;
+
                 if (!roquemon1.comprobarVida())
                 {
                     MessageBox.Show($"{nombre_jugador2} Gano con su {roquemon2.nombre}!!!");
+                    finPartida();
                 }
+                MessageBox.Show($"El {nombre_roquemon2} de {nombre_jugador2} hizo {dano_roquemon2} a el {nombre_roquemon1} de {nombre_jugador1}");
             }
             else if (velocidad_roquemon1 < velocidad_roquemon2)
             {
@@ -209,12 +239,17 @@ namespace Proyecto_POO
                 if (!roquemon1.comprobarVida())
                 {
                     MessageBox.Show($"{nombre_jugador2} Gano con su {roquemon2.nombre}!!!");
+                    finPartida();
                 }
+                MessageBox.Show($"El {nombre_roquemon2} de {nombre_jugador2} hizo {dano_roquemon2} a el {nombre_roquemon1} de {nombre_jugador1}");
                 roquemon2.vida -= (int)dano_roquemon1;
+
                 if (!roquemon2.comprobarVida())
                 {
                     MessageBox.Show($"{nombre_jugador1} Gano con su {roquemon1.nombre}!!!");
+                    finPartida();
                 }
+                MessageBox.Show($"El {nombre_roquemon1} de {nombre_jugador1} hizo {dano_roquemon1} a el {nombre_roquemon2} de {nombre_jugador2}");
             }
         }
 
@@ -226,7 +261,7 @@ namespace Proyecto_POO
             }
             else
             {
-                turnos_ch_r1 = 0;
+                
             }
             cambiarTurno();
         }
@@ -235,7 +270,7 @@ namespace Proyecto_POO
         {
             if (turno)
             {
-                
+                turnos_ch_r1 = 0;
             }
             else
             {
@@ -246,16 +281,21 @@ namespace Proyecto_POO
 
         private void Form3_FormClosing(object sender, FormClosingEventArgs e)
         {
-            var result = MessageBox.Show("Seguro que quieres salir?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            if (result == DialogResult.Yes)
+            if (e.CloseReason == CloseReason.UserClosing)
             {
-                Application.Exit();
+                var result = MessageBox.Show("Seguro que quieres salir?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    Application.Exit();
+                }
+                else
+                {
+                    e.Cancel = true;
+                }
             }
-            else
-            {
-                e.Cancel = true;
-            }
+            
         }
     }
 }

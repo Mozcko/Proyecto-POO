@@ -28,15 +28,18 @@ namespace Proyecto_POO
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            var result = MessageBox.Show("Seguro que quieres salir?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                var result = MessageBox.Show("Seguro que quieres salir?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            if (result == DialogResult.Yes)
-            {
-                Application.Exit();
-            }
-            else
-            {
-                e.Cancel = true;
+                if (result == DialogResult.Yes)
+                {
+                    Application.Exit();
+                }
+                else
+                {
+                    e.Cancel = true;
+                }
             }
         }
     }
