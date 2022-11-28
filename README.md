@@ -7,7 +7,7 @@ participarán 2 jugadores donde cada participante escogerá su Roquemón de
 preferencia para jugar. Para ello primero los jugadores deberán escribir su nombre.
 Después los jugadores podrán elegir de los siguientes 3 Roquemones:
 
-![Datos Roquemon](datosRoquemon.png)
+![image](https://user-images.githubusercontent.com/87629837/204189490-746c8329-ecca-456e-8dd5-3c39a6660f9c.png)
 
 La información escrita en la tabla anterior se deberá cargar de un archivo de texto.
 Una vez elegido los Roquemones pelearán entre ellos, tomando un turno a la vez para
@@ -35,7 +35,7 @@ Para ello se deberán seguir las siguientes reglas en el combate:
 
 Las habilidades disponibles para los Roquemones son:
 
-![habilidades Roquemon](habilidadesRoquemon.png)
+![image](https://user-images.githubusercontent.com/87629837/204189527-ad82ebd2-cce0-46fa-9f78-f93035eb61ac.png)
 
 El programa deberá mostrar cual es el resultado de cada turno por ejemplo:
 
