@@ -15,12 +15,13 @@ namespace Proyecto_POO
         Form1 principal;
         Form2 seleccion;
         InputBox inputBox;
-        Roquemon roquemon1, roquemon2, roquemon1_base, roquemon2_base;
+        Roquemon roquemon1, roquemon2;
         Random random;
         string nombre_jugador1, nombre_jugador2, nombre_roquemon1, nombre_roquemon2;
         string ataque1_roquemon1, ataque2_roquemon1, ataque1_roquemon2, ataque2_roquemon2;
-        bool turno;
+        bool turno, dano_extra_r1, dano_extra_r2;
         int turnos_ch_r1, turnos_ch_r2;
+        int[] roquemon1_base, roquemon2_base;
 
         public Form3(Form2 seleccion,Form1 principal ,InputBox inputBox)
         {
@@ -33,8 +34,9 @@ namespace Proyecto_POO
             this.nombre_jugador2 = inputBox.Nombre_jugador_2;
             this.roquemon1 = seleccion.Roquemon1;
             this.roquemon2 = seleccion.Roquemon2;
-            this.roquemon1_base = seleccion.Roquemon1;
-            this.roquemon2_base = seleccion.Roquemon2;
+            this.roquemon1_base = new int[4];
+            this.roquemon2_base = new int[4];
+            GetRoquemonBase();
             this.turno = true;
             random = new Random();
         }
@@ -97,10 +99,45 @@ namespace Proyecto_POO
             label2.Text = $"Roquemon: {roquemon1.nombre}";
 
         }
-        
+        private void GetRoquemonBase()
+        {
+            this.roquemon1_base[0] = roquemon1.ataque;
+            this.roquemon1_base[1] = roquemon1.defensa;
+            this.roquemon1_base[2] = roquemon1.velocidad;
+            this.roquemon1_base[3] = roquemon1.critico;
+
+            this.roquemon2_base[0] = roquemon2.ataque;
+            this.roquemon2_base[0] = roquemon2.defensa;
+            this.roquemon2_base[0] = roquemon2.velocidad;
+            this.roquemon2_base[0] = roquemon2.critico;
+        }
+        private void resetRoquemon1()
+        {
+            roquemon1.ataque = roquemon1_base[0];
+            roquemon1.defensa = roquemon1_base[1];
+            roquemon1.velocidad = roquemon1_base[2];
+            roquemon1.critico = roquemon1_base[3];
+        }
+        private void resetRoquemon2()
+        {
+            roquemon2.ataque = roquemon2_base[0];
+            roquemon2.defensa = roquemon2_base[1];
+            roquemon2.velocidad = roquemon2_base[2];
+            roquemon2.critico = roquemon2_base[3];
+        }
         public void finPartida()
         {
-            Application.Exit();
+            var result = MessageBox.Show("Quieres Jugar de nuevo?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.No)
+            {
+                Application.Exit();
+            }
+            else if(result == DialogResult.Yes)
+            {
+                Application.Restart();
+            }
+
         }
 
         public void cambiarTurno()
@@ -115,6 +152,11 @@ namespace Proyecto_POO
                 {
                     turnos_ch_r1++;
                 }
+                else if (turnos_ch_r1 >= 3)
+                {
+                    //se retoman los valores base del roquemon (exceptuando la vida)
+                    resetRoquemon1();
+                }
                 turno = false;
             }
             else
@@ -123,9 +165,14 @@ namespace Proyecto_POO
                 Ataque2.Text = ataque2_roquemon1;
                 label1.Text = $"Turno de {nombre_jugador1}";
                 label2.Text = $"Roquemon: {roquemon1.nombre}";
-                if(turnos_ch_r2 < 3)
+                if (turnos_ch_r2 < 3)
                 {
                     turnos_ch_r2++;
+                }
+                else if (turnos_ch_r2 >= 3)
+                {
+                    //se retoman los valores base del roquemon (exceptuando la vida)
+                    resetRoquemon2();
                 }
                 calcularDano();
                 turno = true;
@@ -215,6 +262,15 @@ namespace Proyecto_POO
                 MessageBox.Show($"El ataque fue super Efectivo");
             }
 
+            if (dano_extra_r1)
+            {
+                dano_roquemon1 += 5;
+            }
+            else if (dano_extra_r2)
+            {
+                dano_roquemon2 += 5;
+            }
+
             if (velocidad_roquemon1 > velocidad_roquemon2)
             {
                 roquemon2.vida -= (int)dano_roquemon1;
@@ -257,11 +313,11 @@ namespace Proyecto_POO
         {
             if (turno)
             {
-
+                dano_extra_r1 = true;
             }
             else
             {
-                
+                dano_extra_r2 = true;
             }
             cambiarTurno();
         }
@@ -271,10 +327,34 @@ namespace Proyecto_POO
             if (turno)
             {
                 turnos_ch_r1 = 0;
+                dano_extra_r1 = false;
+                if (roquemon1.tipo != "agua")
+                {
+                    resetRoquemon1();
+                    roquemon1.ataqueEspecial();
+                }
+                else
+                {
+                    resetRoquemon1();
+                    roquemon1.ataqueEspecial();
+                    turnos_ch_r1 = 2;
+                }
             }
             else
             {
                 turnos_ch_r2 = 0;
+                dano_extra_r2 = false;
+                if (roquemon2.tipo != "agua")
+                {
+                    resetRoquemon2();
+                    roquemon2.ataqueEspecial();
+                }
+                else
+                {
+                    resetRoquemon2();
+                    roquemon2.ataqueEspecial();
+                    turnos_ch_r2 = 2;
+                }
             }
             cambiarTurno();
         }

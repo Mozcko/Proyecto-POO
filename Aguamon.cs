@@ -21,6 +21,7 @@ namespace Proyecto_POO
         public override void ataqueEspecial()
         {
             //se aumenta la velocidad en 100 en este turno y despues se ataca
+            this.velocidad += 100;
         }
     }
 }

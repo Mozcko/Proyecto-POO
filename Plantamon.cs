@@ -22,6 +22,7 @@ namespace Proyecto_POO
         public override void ataqueEspecial()
         {
             //atacara este turno y aumenta la defensa por 5 durante 3 turnos
+            this.defensa += 5;
         }
     }
 }

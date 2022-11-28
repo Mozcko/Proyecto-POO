@@ -22,7 +22,7 @@ namespace Proyecto_POO
         public override void ataqueEspecial()
         {
             //ataca y aumenta el critico del roquemon por 20 por 3 turnos
-            //this.critico += 20;
+            this.critico += 20;
         }
     }
 }

@@ -26,6 +26,11 @@ namespace Proyecto_POO
             inputBox.Get_Players_name();
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("no hubo tiempo para hacer un modo de un solo jugador XD");
+        }
+
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (e.CloseReason == CloseReason.UserClosing)
