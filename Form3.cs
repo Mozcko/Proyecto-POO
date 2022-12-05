@@ -19,6 +19,7 @@ namespace Proyecto_POO
         Random random;
         string nombre_jugador1, nombre_jugador2, nombre_roquemon1, nombre_roquemon2;
         string ataque1_roquemon1, ataque2_roquemon1, ataque1_roquemon2, ataque2_roquemon2;
+        string roquemon1_image, roquemon2_image;
         bool turno, dano_extra_r1, dano_extra_r2;
         int turnos_ch_r1, turnos_ch_r2;
         int[] roquemon1_base, roquemon2_base;
@@ -44,6 +45,8 @@ namespace Proyecto_POO
         {
             llenarCampos();
         }
+
+       
         public void llenarCampos()
         {
             switch (roquemon1.tipo)
@@ -52,21 +55,25 @@ namespace Proyecto_POO
                     ataque1_roquemon1 = "Torrente";
                     ataque2_roquemon1 = "Ataque Rapido";
                     nombre_roquemon1 = "aguamon";
+                    roquemon1_image = "Aguamon.png";
                     break;
                 case "planta":
                     ataque1_roquemon1 = "Latigo";
                     ataque2_roquemon1 = "Fotosintesis";
                     nombre_roquemon1 = "plantamon";
+                    roquemon1_image = "Plantamon.png";
                     break;
                 case "fuego":
                     ataque1_roquemon1 = "Flama";
                     ataque2_roquemon1 = "Furia";
                     nombre_roquemon1 = "fuegomon";
+                    roquemon1_image = "Fuegomon.png";
                     break;
                 default:
                     ataque1_roquemon1 = "Placage";
                     ataque2_roquemon1 = "Ataque Especial";
                     nombre_roquemon1 = "roquemon generico";
+                    roquemon1_image = null;
                     break;
             }
             switch (roquemon2.tipo)
@@ -75,28 +82,37 @@ namespace Proyecto_POO
                     ataque1_roquemon2 = "Torrente";
                     ataque2_roquemon2 = "Ataque Rapido";
                     nombre_roquemon2 = "aguamon";
+                    roquemon2_image = "Aguamon.png";
                     break;
                 case "planta":
                     ataque1_roquemon2 = "Latigo";
                     ataque2_roquemon2 = "Fotosintesis";
                     nombre_roquemon2 = "plantamon";
+                    roquemon2_image = "Plantamon.png";
                     break;
                 case "fuego":
                     ataque1_roquemon2 = "Flama";
                     ataque2_roquemon2 = "Furia";
                     nombre_roquemon2 = "fuegomon";
+                    roquemon2_image = "Fuegomon.png";
                     break;
                 default:
                     ataque1_roquemon2 = "Placage";
                     ataque2_roquemon2 = "Ataque Especial";
                     nombre_roquemon2 = "roquemon generico";
+                    roquemon2_image = "Fuegomon.png";
                     break;
             }
 
+            //pictureBox1.Image = Image.FromFile
+            //(System.Environment.GetFolderPath
+            //(System.Environment.SpecialFolder.Personal)  
+            //+ @"\Image.gif"); 
             Ataque1.Text = ataque1_roquemon1;
             Ataque2.Text = ataque2_roquemon1;
             label1.Text = $"Turno de {nombre_jugador1}";
             label2.Text = $"Roquemon: {roquemon1.nombre}";
+            p_Roquemon.Image = Image.FromFile($"Resources/{roquemon1_image}");
 
         }
         private void GetRoquemonBase()
@@ -148,6 +164,9 @@ namespace Proyecto_POO
                 Ataque2.Text = ataque2_roquemon2;
                 label1.Text = $"Turno de {nombre_jugador2}";
                 label2.Text = $"Roquemon: {roquemon2.nombre}";
+                p_Roquemon.Image = Image.FromFile($"Resources/{roquemon2_image}");
+
+                //p_Roquemon.Image()
                 if (turnos_ch_r1 < 3)
                 {
                     turnos_ch_r1++;
@@ -165,6 +184,8 @@ namespace Proyecto_POO
                 Ataque2.Text = ataque2_roquemon1;
                 label1.Text = $"Turno de {nombre_jugador1}";
                 label2.Text = $"Roquemon: {roquemon1.nombre}";
+                p_Roquemon.Image = Image.FromFile($"Resources/{roquemon1_image}");
+
                 if (turnos_ch_r2 < 3)
                 {
                     turnos_ch_r2++;

@@ -64,12 +64,15 @@ namespace Proyecto_POO
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(215, 131);
+            this.ClientSize = new System.Drawing.Size(214, 131);
+            this.ControlBox = false;
             this.Controls.Add(this.Aceptar);
             this.Controls.Add(this.Label_player);
             this.Controls.Add(this.text_nombre);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "InputBox";
-            this.Text = "InputBox";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = " ";
             this.ResumeLayout(false);
             this.PerformLayout();
 

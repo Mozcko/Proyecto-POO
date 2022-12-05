@@ -84,6 +84,7 @@ namespace Proyecto_POO
             }
             LabelMenu.Text = "Jugador 2: escoge tu Roquemon";
             button1.Enabled = false;
+            p_Aguamon.Enabled = false;
         }
 
         //fuegomon
@@ -105,6 +106,7 @@ namespace Proyecto_POO
             }
             LabelMenu.Text = "Jugador 2: escoge tu Roquemon";
             button2.Enabled = false;
+            p_Fuegomon.Enabled = false;
         }
 
         //plantamon
@@ -126,6 +128,7 @@ namespace Proyecto_POO
             }
             LabelMenu.Text = "Jugador 2: escoge tu Roquemon";
             button3.Enabled = false;
+            p_Plantamon.Enabled = false;
         }
 
         // A method that hides the current form and shows the principal form. 
